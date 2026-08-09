@@ -35,7 +35,7 @@ function App() {
     formData.append("file", file);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/analyze", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/analyze`, {
         method: "POST",
         body: formData,
       });
@@ -63,35 +63,35 @@ function App() {
         <div className="dot-field" />
       </div>
 
-     <motion.nav
-  initial={{ opacity: 0, y: -8 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  className="relative z-10 border-b backdrop-blur-sm"
-  style={{ borderColor: "var(--border)", background: "rgba(5,7,13,0.6)" }}
->
-  <div className="max-w-3xl w-full mx-auto px-6 py-5 relative flex items-center justify-center">
-    <button onClick={goHome} className="flex items-center justify-center gap-2.5">
-      <Mark size={32} />
-      <span className="font-brand text-2xl md:text-3xl tracking-tight">PRAMANA</span>
-    </button>
+      <motion.nav
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 border-b backdrop-blur-sm"
+        style={{ borderColor: "var(--border)", background: "rgba(5,7,13,0.6)" }}
+      >
+        <div className="max-w-3xl w-full mx-auto px-6 py-5 relative flex items-center justify-center">
+          <button onClick={goHome} className="flex items-center justify-center gap-2.5">
+            <Mark size={32} />
+            <span className="font-brand text-2xl md:text-3xl tracking-tight">PRAMANA</span>
+          </button>
 
-    <div className="absolute right-6 flex items-center gap-5 text-sm">
-      <button
-        onClick={goHome}
-        style={{ color: view === "home" ? "var(--text-primary)" : "var(--text-secondary)" }}
-      >
-        Home
-      </button>
-      <button
-        onClick={() => { setResult(null); setView("history"); }}
-        style={{ color: view === "history" ? "var(--text-primary)" : "var(--text-secondary)" }}
-      >
-        History
-      </button>
-    </div>
-  </div>
-</motion.nav>
+          <div className="absolute right-6 flex items-center gap-5 text-sm">
+            <button
+              onClick={goHome}
+              style={{ color: view === "home" ? "var(--text-primary)" : "var(--text-secondary)" }}
+            >
+              Home
+            </button>
+            <button
+              onClick={() => { setResult(null); setView("history"); }}
+              style={{ color: view === "history" ? "var(--text-primary)" : "var(--text-secondary)" }}
+            >
+              History
+            </button>
+          </div>
+        </div>
+      </motion.nav>
 
       <div className="relative z-10 max-w-3xl mx-auto px-6 flex-1 w-full">
         {view === "history" && !result && (

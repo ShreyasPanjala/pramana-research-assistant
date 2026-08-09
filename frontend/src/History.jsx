@@ -9,7 +9,7 @@ function History({ onOpenItem }) {
   const fetchHistory = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://127.0.0.1:8000/history");
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/history`);
       const data = await res.json();
       setItems(data);
     } catch {
@@ -24,13 +24,13 @@ function History({ onOpenItem }) {
   }, []);
 
   const handleOpen = async (id) => {
-    const res = await fetch(`http://127.0.0.1:8000/history/${id}`);
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/history/${id}`);
     const data = await res.json();
     onOpenItem(data.result);
   };
 
   const handleDelete = async (id) => {
-    await fetch(`http://127.0.0.1:8000/history/${id}`, { method: "DELETE" });
+    await fetch(`${import.meta.env.VITE_API_URL}/history/${id}`, { method: "DELETE" });
     setConfirmDeleteId(null);
     fetchHistory();
   };
