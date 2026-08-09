@@ -1,0 +1,1 @@
+A transformer is a neural network architecture introduced in 2017 that processes entire data sequences simultaneously rather than step-by-step. Using a "self-attention" mechanism, it tracks relationships between words or parts, forming the foundational backbone for modern AI systems like ChatGPT, Gemini, and Claude

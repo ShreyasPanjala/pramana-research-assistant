@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --bg-0: #05070d;
+  --bg-1: #080b14;
+  --bg-2: #0b1020;
+  --surface: #0e1422;
+  --surface-2: #111827;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(129, 140, 248, 0.35);
+  --text-primary: #f1f1f4;
+  --text-secondary: #9497a8;
+  --accent: #6d75e8;
+  --accent-soft: rgba(109, 117, 232, 0.12);
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --danger: #f87171;
+}
+
+body {
+  background: var(--bg-0);
+  color: var(--text-primary);
+}
+
+.font-brand {
+  font-family: "DM Serif Display", Georgia, serif;
+}
+
+.font-body {
+  font-family: "Inter", sans-serif;
+}
+
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.glow-orb {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(109, 117, 232, 0.16) 0%, rgba(109, 117, 232, 0.05) 40%, transparent 70%);
+  filter: blur(40px);
+  animation: driftGlow 18s ease-in-out infinite;
+}
+
+@keyframes driftGlow {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-48%) translateY(30px);
+  }
+}
+
+.dot-field {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 20%, black, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-orb {
+    animation: none;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
