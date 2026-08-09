@@ -54,6 +54,8 @@ def analyze_paper(paper_text: str) -> dict:
     # academic literature, unlike our narrow local knowledge base.
     openalex_query = extract_search_keywords(paper_text)
     external_knowledge = retrieve_from_openalex(openalex_query, top_k=2)
+    print(f"DEBUG — local_knowledge count: {len(local_knowledge)}")
+    print(f"DEBUG — external_knowledge count: {len(external_knowledge)}")
     print(f"DEBUG — OpenAlex query: {openalex_query!r}")
     print(f"DEBUG — OpenAlex results: {external_knowledge}")
 
