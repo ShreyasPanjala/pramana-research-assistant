@@ -11,11 +11,15 @@ app = FastAPI()
 
 init_db()
 
-# Allows your React dev server (different port) to call this API.
-# Without this, the browser blocks the request as cross-origin.
+# Allows your deployed Vercel frontend (and any preview deployment URLs
+# it generates) plus local dev to call this API. Without this, the
+# browser blocks the request as cross-origin.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # fine for local dev, tighten later if deployed
+    allow_origins=[
+        "https://pramana-research-assistant-six.vercel.app",
+        "http://localhost:5173",
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
