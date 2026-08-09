@@ -70,13 +70,13 @@ function App() {
         className="relative z-10 border-b backdrop-blur-sm"
         style={{ borderColor: "var(--border)", background: "rgba(5,7,13,0.6)" }}
       >
-        <div className="max-w-3xl w-full mx-auto px-6 py-5 relative flex items-center justify-center">
-          <button onClick={goHome} className="flex items-center justify-center gap-2.5">
-            <Mark size={32} />
-            <span className="font-brand text-2xl md:text-3xl tracking-tight">PRAMANA</span>
+        <div className="max-w-3xl w-full mx-auto px-4 sm:px-6 py-4 sm:py-5 relative flex items-center justify-center">
+          <button onClick={goHome} className="flex items-center justify-center gap-2">
+            <Mark size={24} />
+            <span className="font-brand text-lg sm:text-2xl md:text-3xl tracking-tight">PRAMANA</span>
           </button>
 
-          <div className="absolute right-6 flex items-center gap-5 text-sm">
+          <div className="absolute right-3 sm:right-6 flex items-center gap-3 sm:gap-5 text-xs sm:text-sm">
             <button
               onClick={goHome}
               style={{ color: view === "home" ? "var(--text-primary)" : "var(--text-secondary)" }}
@@ -93,7 +93,7 @@ function App() {
         </div>
       </motion.nav>
 
-      <div className="relative z-10 max-w-3xl mx-auto px-6 flex-1 w-full">
+      <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 flex-1 w-full">
         {view === "history" && !result && (
           <div className="pt-14 pb-24">
             <History onOpenItem={(res) => setResult(res)} />
@@ -113,7 +113,7 @@ function App() {
                 AI-powered research understanding
               </motion.p>
 
-              <h1 className="font-brand text-4xl md:text-5xl leading-[1.25] mb-6">
+              <h1 className="font-brand text-3xl sm:text-4xl md:text-5xl leading-[1.3] sm:leading-[1.25] mb-6 px-2">
                 {headingLines.map((line, i) => (
                   <motion.span
                     key={i}
@@ -131,7 +131,7 @@ function App() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.85 }}
-                className="text-base max-w-lg mx-auto leading-relaxed"
+                className="text-base max-w-lg mx-auto leading-relaxed px-2"
                 style={{ color: "var(--text-secondary)" }}
               >
                 Turn dense research papers into structured explanations,
@@ -157,7 +157,7 @@ function App() {
       </div>
 
       <footer
-        className="relative z-10 text-center py-8 text-sm border-t"
+        className="relative z-10 text-center py-8 text-sm border-t px-4"
         style={{ borderColor: "var(--border)", color: "var(--text-secondary)" }}
       >
         <span>Developed by </span>

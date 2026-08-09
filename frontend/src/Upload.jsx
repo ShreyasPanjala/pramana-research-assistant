@@ -53,7 +53,7 @@ function Upload({ onUpload, loading, error }) {
         }}
         onDragLeave={() => setDragActive(false)}
         onDrop={handleDrop}
-        className="rounded-xl p-10 text-center backdrop-blur-md transition-all duration-300"
+        className="rounded-xl p-6 sm:p-10 text-center backdrop-blur-md transition-all duration-300"
         style={{
           border: `1px solid ${dragActive ? "var(--border-strong)" : "var(--border)"}`,
           background: dragActive ? "var(--accent-soft)" : "rgba(255,255,255,0.02)",
@@ -84,14 +84,14 @@ function Upload({ onUpload, loading, error }) {
             ))}
           </div>
         ) : file ? (
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-3 flex-wrap">
             <div className="text-left">
-              <p className="text-sm font-medium">{file.name}</p>
+              <p className="text-sm font-medium break-all">{file.name}</p>
               <p className="text-xs" style={{ color: "var(--text-secondary)" }}>{formatSize(file.size)}</p>
             </div>
             <button
               onClick={() => setFile(null)}
-              className="text-xs px-2.5 py-1 rounded"
+              className="text-xs px-2.5 py-1 rounded shrink-0"
               style={{ color: "var(--text-secondary)", border: "1px solid var(--border)" }}
             >
               Remove
