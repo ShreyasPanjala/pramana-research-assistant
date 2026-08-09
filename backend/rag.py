@@ -63,9 +63,6 @@ def _reconstruct_abstract(inverted_index):
 
 
 def retrieve_from_openalex(query: str, top_k: int = 2) -> list[str]:
-    """Search OpenAlex's academic literature index and return
-    title + abstract snippets, so retrieval generalizes beyond
-    our small local knowledge base to any paper topic."""
     results = []
     try:
         response = requests.get(
@@ -73,8 +70,10 @@ def retrieve_from_openalex(query: str, top_k: int = 2) -> list[str]:
             params={"search": query, "per_page": top_k},
             timeout=5,
         )
+        print(f"DEBUG — OpenAlex status code: {response.status_code}")
         response.raise_for_status()
         data = response.json()
+        print(f"DEBUG — OpenAlex raw result count: {len(data.get('results', []))}")
 
         for work in data.get("results", []):
             title = work.get("title", "Untitled")
@@ -87,8 +86,8 @@ def retrieve_from_openalex(query: str, top_k: int = 2) -> list[str]:
             else:
                 results.append(title)
 
-    except requests.RequestException:
-        pass
+    except requests.RequestException as e:
+        print(f"DEBUG — OpenAlex request failed: {e}")
 
     return results
 
