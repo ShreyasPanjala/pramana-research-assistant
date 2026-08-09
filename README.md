@@ -51,9 +51,9 @@ Structured JSON
  │
  ▼
 SQLite
+React Frontend
 
-🛠️ Tech Stack
-
+## 🛠️ Tech Stack
 Frontend: React, Vite, Tailwind CSS, Framer Motion
 Backend: Python, FastAPI
 AI: Groq, Llama 3.3
@@ -62,8 +62,6 @@ PDF: PyMuPDF
 Database: SQLite
 Deployment: Vercel + Render
 
-👨‍💻 Author
+##👨‍💻 Author
 Shreyas Panjala
- │
- ▼
-React Frontend
+
