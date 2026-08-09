@@ -40,12 +40,13 @@ function App() {
         body: formData,
       });
 
-      if (!res.ok) throw new Error("Analysis failed");
+      if (!res.ok) throw new Error(`Server responded with status ${res.status}`);
 
       const data = await res.json();
       setResult(data);
     } catch (err) {
-      setError(err.message);
+      console.error("Upload error:", err);
+      setError(`${err.name || "Error"}: ${err.message || "Unknown error"}`);
     } finally {
       setLoading(false);
     }
