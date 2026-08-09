@@ -87,52 +87,7 @@ Pramana transforms dense research papers into structured explanations, supportin
 
 ---
 
-## 🚀 Run Locally
 
-### Backend
-
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-
-Create a `.env` file:
-
-```env
-GROQ_API_KEY=your_groq_api_key
-```
-
-### Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
----
-
-## 🔐 Environment Variables
-
-The backend requires:
-
-```env
-GROQ_API_KEY=your_groq_api_key
-```
-
-Never commit API keys or `.env` files to the repository.
-
----
-
-## 🔮 Future Improvements
-
-- Citation-level grounding
-- PDF passage highlighting
-- Multi-paper comparison
-- Conversational Q&A
-- Research knowledge graphs
-- Improved table and figure extraction
 
 ---
 
@@ -140,14 +95,6 @@ Never commit API keys or `.env` files to the repository.
 
 **Shreyas Panjala**
 
-AI & Data Science
 
 ---
 
-## 🌐 Links
-
-**Live Application:**  
-https://pramana-research-assistant-six.vercel.app
-
-**API Documentation:**  
-https://pramana-research-assistant.onrender.com/docs
