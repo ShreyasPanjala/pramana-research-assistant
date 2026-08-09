@@ -2,7 +2,7 @@
 
 ### AI-powered research understanding
 
-Upload a research paper. Understand the ideas. Explore the evidence.
+**Upload a paper. Understand the ideas. Explore the evidence.**
 
 Pramana transforms dense research papers into structured explanations, supporting knowledge, and questions that test your understanding.
 
@@ -17,51 +17,137 @@ Pramana transforms dense research papers into structured explanations, supportin
 - 🧠 **Hybrid RAG** — Combines a local ChromaDB knowledge base with live academic retrieval through OpenAlex.
 - 🔎 **Academic Context** — Dynamically retrieves relevant research based on the paper's topic.
 - 🤖 **Structured LLM Analysis** — Uses Llama 3.3 via Groq with structured JSON output.
-- 📚 **Prerequisites & Concepts** — Identifies knowledge needed to understand the paper.
+- 📚 **Prerequisite Concepts** — Identifies concepts needed to understand the paper.
 - ❓ **Understanding Questions** — Generates questions to test comprehension.
-- 🗃️ **Persistent History** — Stores previous analyses in SQLite.
+- 🗃️ **Persistent History** — Stores and displays previous analyses using SQLite.
 
 ---
 
 ## 🏗️ Architecture
 
 ```text
-PDF
- │
- ▼
-PyMuPDF
- │
- ▼
-Paper Text
- │
- ├──────────────► ChromaDB
- │                Local Knowledge
- │
- └──────────────► OpenAlex
-                  Academic Retrieval
- │
- ▼
-Retrieved Context
- │
- ▼
-Groq / Llama 3.3
- │
- ▼
-Structured JSON
- │
- ▼
-SQLite
-React Frontend
+                         Research Paper
+                               │
+                               ▼
+                         PDF Extraction
+                            PyMuPDF
+                               │
+                               ▼
+                          Paper Text
+                               │
+                    ┌──────────┴──────────┐
+                    │                     │
+                    ▼                     ▼
+               ChromaDB               OpenAlex
+          Local Knowledge Base     Academic Search
+                    │                     │
+                    └──────────┬──────────┘
+                               ▼
+                     Retrieved Context
+                               │
+                               ▼
+                       Groq / Llama 3.3
+                               │
+                               ▼
+                       Structured JSON
+                               │
+                               ▼
+                            SQLite
+                               │
+                               ▼
+                       React Frontend
+```
+
+---
 
 ## 🛠️ Tech Stack
-Frontend: React, Vite, Tailwind CSS, Framer Motion
-Backend: Python, FastAPI
-AI: Groq, Llama 3.3
-RAG: ChromaDB + OpenAlex
-PDF: PyMuPDF
-Database: SQLite
-Deployment: Vercel + Render
 
-##👨‍💻 Author
-Shreyas Panjala
+| Category | Technology |
+|---|---|
+| Frontend | React, Vite, Tailwind CSS, Framer Motion |
+| Backend | Python, FastAPI |
+| LLM | Llama 3.3 via Groq |
+| RAG | ChromaDB + OpenAlex |
+| PDF Processing | PyMuPDF |
+| Database | SQLite |
+| Deployment | Vercel + Render |
 
+---
+
+## 🔄 How It Works
+
+1. **Upload** a research paper in PDF format.
+2. **Extract** the paper's text using PyMuPDF.
+3. **Retrieve** relevant concepts from the local ChromaDB knowledge base.
+4. **Search** OpenAlex for related academic literature.
+5. **Combine** the paper and retrieved context.
+6. **Analyze** the content using Llama 3.3 through Groq.
+7. **Generate** structured results including methodology, datasets, results, limitations, prerequisites, and questions.
+8. **Store** the analysis in SQLite for persistent history.
+
+---
+
+## 🚀 Run Locally
+
+### Backend
+
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+Create a `.env` file:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+## 🔐 Environment Variables
+
+The backend requires:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+```
+
+Never commit API keys or `.env` files to the repository.
+
+---
+
+## 🔮 Future Improvements
+
+- Citation-level grounding
+- PDF passage highlighting
+- Multi-paper comparison
+- Conversational Q&A
+- Research knowledge graphs
+- Improved table and figure extraction
+
+---
+
+## 👨‍💻 Author
+
+**Shreyas Panjala**
+
+AI & Data Science
+
+---
+
+## 🌐 Links
+
+**Live Application:**  
+https://pramana-research-assistant-six.vercel.app
+
+**API Documentation:**  
+https://pramana-research-assistant.onrender.com/docs
